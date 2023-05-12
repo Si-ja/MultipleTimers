@@ -23,7 +23,7 @@ public class IndependentBackgroundService : IHostedService, IDisposable
             TimerEventProxy,
             null,
             TimeSpan.Zero,
-            TimeSpan.FromSeconds(5));
+            TimeSpan.FromSeconds(Settings.Time.DelayDoubleSeconds / 2));
 
         return Task.CompletedTask;
     }
@@ -35,8 +35,5 @@ public class IndependentBackgroundService : IHostedService, IDisposable
         return Task.CompletedTask;
     }
 
-    public void Dispose()
-    {
-        _timer?.Dispose();
-    }
+    public void Dispose() => _timer?.Dispose();
 }
